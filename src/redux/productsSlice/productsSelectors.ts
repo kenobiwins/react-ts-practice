@@ -9,11 +9,21 @@ import { createSelector } from '@reduxjs/toolkit';
 const selectAllProducts = (state: { products: SliceState }) =>
   state.products.products;
 
-const selectAllDepartments = (state: { products: SliceState }) => {
+const selectAllDepartmentNames = (state: { products: SliceState }) => {
   return state.products.products
     .flatMap(product => product.department)
     .filter((item, index, arr) => arr.indexOf(item) === index);
 };
+
+// const selectAllDepartmentsKeyValue = (state: { products: SliceState }) => {
+//   return state.products.products.reduce<any[]>((acc, item, i) => {
+//     if (item.department) {
+//       acc.push();
+//     }
+
+//     return acc;
+//   }, []);
+// };
 
 const selectNewArrives = createSelector([selectAllProducts], products => {
   const sortedArr = [...products].sort(
@@ -32,5 +42,6 @@ export {
   selectAllProducts,
   selectNewArrives,
   selectByDepartment,
-  selectAllDepartments,
+  selectAllDepartmentNames,
+  // selectAllDepartmentsKeyValue,
 };
