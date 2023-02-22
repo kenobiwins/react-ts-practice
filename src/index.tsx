@@ -4,11 +4,11 @@ import { App } from 'components/App';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { store } from 'redux/store';
+import store from 'redux/store';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter basename="react-ts-internet-shop">
+    <BrowserRouter basename="react-ts-practice">
       <Provider store={store}>
         <App />
       </Provider>

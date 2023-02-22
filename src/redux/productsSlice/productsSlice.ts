@@ -1,22 +1,29 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { fetchAllProducts } from 'services/shop.service';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { fetchAllProducts } from './products.operations';
+import { SliceState, initialProductsState } from './productsState';
 
-interface SliceState{
-    products: any[],
-    isLoading: 'idle' | 'pending' | 'succeeded' | 'failed'
-}
+const handlePending = (state: SliceState): void => {
+  state.isLoading = 'pending';
+  state.isError = null;
+};
 
-const initialState:SliceState= {
-    products: [],
-    isLoading: 'idle',
-} 
-
+const handleReject = (state: SliceState, { payload }: any) => {
+  state.isLoading = 'failed';
+  state.isError = payload;
+};
 
 const productsSlice = createSlice({
-    name: 'products',
-    initialState,
-    reducers:{},
-    extraReducers: builder => {builder.addCase(fetchAllProducts.fulfilled,(state)=>state)},
-})
+  name: 'products',
+  initialState: initialProductsState,
+  reducers: {},
+  extraReducers: builder => {
+    builder
+      .addCase(fetchAllProducts.fulfilled, (state, { payload }) => {
+        state.products = payload;
+      })
+      .addMatcher(isAnyOf(fetchAllProducts.pending), handlePending)
+      .addMatcher(isAnyOf(fetchAllProducts.rejected), handleReject);
+  },
+});
 
 export const productsReducer = productsSlice.reducer;
