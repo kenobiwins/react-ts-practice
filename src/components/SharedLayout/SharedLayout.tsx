@@ -2,6 +2,8 @@ import { Navigation } from 'components/Navigation/Navigation';
 import { FC, Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
+import './index.css';
+
 export const SharedLayout: FC = () => {
   return (
     <>
@@ -13,7 +15,7 @@ export const SharedLayout: FC = () => {
           <Outlet />
         </Suspense>
       </main>
-      <footer></footer>
+      <footer className="footer"></footer>
     </>
   );
 };

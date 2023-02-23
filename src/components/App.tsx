@@ -1,4 +1,5 @@
 import { SharedLayout } from 'components/SharedLayout/SharedLayout';
+import ContactsPage from 'pages/ContactsPage/ContactsPage';
 import { HomePage } from 'pages/HomePage/HomePage';
 import { ProductsDetailsPage } from 'pages/ProductsDetailsPage/ProductsDetailsPage';
 import { FC } from 'react';
@@ -11,6 +12,7 @@ export const App: FC = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<p>products </p>} />
         <Route path="/products/:productId" element={<ProductsDetailsPage />} />
+        <Route path="/contacts" element={<ContactsPage />} />
       </Route>
       <Route path="*" element={<Navigate to={'/'} />} />
     </Routes>
