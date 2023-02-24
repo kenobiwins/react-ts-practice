@@ -7,7 +7,7 @@ interface IPropsProductList {
   items: IProductItem[];
 }
 
-export const ProductsList: FC<IPropsProductList> = ({ items }) => {
+const ProductsList: FC<IPropsProductList> = ({ items }) => {
   const location = useLocation();
 
   return (
@@ -31,3 +31,5 @@ export const ProductsList: FC<IPropsProductList> = ({ items }) => {
     </>
   );
 };
+
+export default ProductsList;

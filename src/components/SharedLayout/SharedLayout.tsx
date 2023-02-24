@@ -12,9 +12,11 @@ export const SharedLayout: FC = () => {
         <Navigation />
       </header>
       <main>
-        <Suspense fallback={null}>
-          <Outlet />
-        </Suspense>
+        <div>
+          <Suspense fallback={null}>
+            <Outlet />
+          </Suspense>
+        </div>
       </main>
       <footer className="footer">
         <Address />

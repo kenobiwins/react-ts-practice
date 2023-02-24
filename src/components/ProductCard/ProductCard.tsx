@@ -23,6 +23,9 @@ const ProductCard: FC<IPropsProductCard> = ({ item, location }) => {
       <Link to={`/products/${item.id}`} state={{ from: location }}>
         <img src={item.image} alt={item.name} />
         <h2> {item.name}</h2>
+        <h3>{item.department}</h3>
+        <p>{item.product}</p>
+        <p>{item.price}</p>
       </Link>
     </li>
   );
