@@ -1,4 +1,4 @@
-interface FilterInitialState {
+export interface FilterInitialState {
   status: string;
   isLoading: 'idle' | 'pending' | 'succeeded' | 'failed';
   isError: null | object;
